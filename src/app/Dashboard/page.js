@@ -15,13 +15,13 @@ export default function DashBoard() {
 			const res = await axios.post("/api/PostTodo", {
 				title,
 			});
-			const data = await res.data;
-			if (data && data.success) {
+			const data = await res?.data;
+			if (data && data?.success) {
 				setTitle("");
 				getTodos();
-				toast.success(data.message);
+				toast.success(data?.message);
 			} else {
-				toast.error(data.message);
+				toast.error(data?.message);
 			}
 		} catch (error) {
 			console.log(error);
@@ -30,7 +30,7 @@ export default function DashBoard() {
 	const getTodos = async () => {
 		try {
 			const res = await axios.get("/api/GetTodos");
-			const { data, message } = await res.data;
+			const { data } = await res?.data;
 			setallTodo(data);
 		} catch (error) {
 			console.log(error);
@@ -40,7 +40,7 @@ export default function DashBoard() {
 	const getUser = async () => {
 		try {
 			const res = await axios.get("/api/GetUser");
-			const { success, userData, message } = await res.data;
+			const { success, userData, message } = await res?.data;
 			if (success) {
 				dispatch(loginUser());
 				dispatch(setAuthUser(userData));

@@ -16,12 +16,12 @@ const SignUp = () => {
 				email,
 				password,
 			});
-			const data = await res.data;
+			const data = await res?.data;
 
-			if (data && data.success) {
-				toast.success(data.message);
+			if (data && data?.success) {
+				toast.success(data?.message);
 			} else {
-				toast.error(data.message);
+				toast.error(data?.message);
 			}
 		} catch (error) {
 			console.log(error);
@@ -97,7 +97,11 @@ const SignUp = () => {
 							type="submit">
 							Sign Up
 						</button>
-						<Link className="text-purple-500 hover:text-purple-600" href={"/Login"}>Login</Link>
+						<Link
+							className="text-purple-500 hover:text-purple-600"
+							href={"/Login"}>
+							Login
+						</Link>
 					</div>
 				</form>
 			</div>
